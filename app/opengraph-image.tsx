@@ -5,7 +5,7 @@ import { brand, loadFont } from "@/lib/brand-assets";
 import { defaultContent } from "@/lib/content/default-content";
 
 // Imagem que aparece ao compartilhar o link (WhatsApp, Instagram, Facebook…).
-export const alt = "Juliano Martins, advogado em Piracaia/SP";
+export const alt = "Juliano Martins, advogado em Piracaia/SP – OAB/SP 404.789";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -16,7 +16,7 @@ export default async function OpengraphImage() {
     readFile(join(process.cwd(), "public/images/juliano-martins-advogado.jpg")),
   ]);
   const portraitSrc = `data:image/jpeg;base64,${portrait.toString("base64")}`;
-  const { contact } = defaultContent;
+  const { contact, profile } = defaultContent;
 
   return new ImageResponse(
     (
@@ -26,10 +26,13 @@ export default async function OpengraphImage() {
             <div style={{ fontFamily: "Sans", fontSize: 22, letterSpacing: 4, color: brand.accent }}>
               ADVOCACIA EM PIRACAIA · SP
             </div>
-            <div style={{ marginTop: 32, fontFamily: "Serif", fontSize: 92, lineHeight: 1, letterSpacing: -3, color: brand.ink }}>
-              Juliano Martins
+            <div style={{ marginTop: 28, fontFamily: "Serif", fontSize: 80, lineHeight: 1, letterSpacing: -2.5, color: brand.ink }}>
+              {profile.name}
             </div>
-            <div style={{ marginTop: 28, fontFamily: "Sans", fontSize: 29, lineHeight: 1.45, color: brand.muted }}>
+            <div style={{ marginTop: 18, fontFamily: "Sans", fontSize: 28, color: brand.ink }}>
+              {[profile.role, profile.oab].filter(Boolean).join(" · ")}
+            </div>
+            <div style={{ marginTop: 22, fontFamily: "Sans", fontSize: 27, lineHeight: 1.45, color: brand.muted }}>
               Previdenciário e INSS · Trabalhista · Cível e consumidor · Família e sucessões · Criminal
             </div>
           </div>

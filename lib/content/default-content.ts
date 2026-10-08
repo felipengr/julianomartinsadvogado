@@ -9,7 +9,7 @@ export const defaultContent: SiteContent = {
   profile: {
     name: "Juliano Martins",
     role: "Advogado",
-    oab: "",
+    oab: "OAB/SP 404.789",
     tagline: "Advocacia · Piracaia/SP",
   },
   contact: {
