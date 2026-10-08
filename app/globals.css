@@ -1,26 +1,87 @@
 @import "tailwindcss";
 
+/* Tema escuro controlado pelo botão ◐ (data-theme no <html>). */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #f6f5f0;
+  --surface: #ffffff;
+  --ink: #172d2b;
+  --muted: #5c706c;
+  --line: #dce2dc;
+  /* Dourado do layout (#a3824e) um pouco mais escuro para textos pequenos
+     passarem no contraste mínimo de acessibilidade (WCAG AA). */
+  --accent: #8c6d3f;
+  --soft: #e8ede6;
+  /* Dourado sobre os blocos invertidos (fundo --ink). */
+  --accent-inverse: #d1b17b;
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --bg: #101e1d;
+  --surface: #192c29;
+  --ink: #f3f4eb;
+  --muted: #b8c9c2;
+  --line: #344944;
+  --accent: #d1b17b;
+  --soft: #233a34;
+  --accent-inverse: #7a5d33;
+  color-scheme: dark;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-soft: var(--soft);
+  --color-accent-inverse: var(--accent-inverse);
+  --color-gold: #d1b17b;
+  --color-night: #101e1d;
+  --color-whatsapp: #286447;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-source-serif), ui-serif, Georgia, serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 4px;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+  }
 }
