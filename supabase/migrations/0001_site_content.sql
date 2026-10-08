@@ -53,6 +53,16 @@ create policy "Admins publicam versões"
   with check (public.is_admin());
 
 -- ---------------------------------------------------------------------------
+-- Permissões explícitas da Data API. Necessárias quando o projeto é criado
+-- com "Automatically expose new tables" desligado (recomendado); sem efeito
+-- quando está ligado. As regras de quem pode o quê continuam no RLS acima.
+-- ---------------------------------------------------------------------------
+grant usage on schema public to anon, authenticated;
+grant select on public.site_versions to anon, authenticated;
+grant insert on public.site_versions to authenticated;
+grant execute on function public.is_admin() to anon, authenticated;
+
+-- ---------------------------------------------------------------------------
 -- Fotos do site
 -- ---------------------------------------------------------------------------
 insert into storage.buckets (id, name, public, file_size_limit, allowed_mime_types)
