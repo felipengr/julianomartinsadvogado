@@ -1,0 +1,59 @@
+{
+  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
+  "include-component-in-tag": false,
+  "packages": {
+    ".": {
+      "release-type": "node",
+      "package-name": "julianomartinsadvogado",
+      "changelog-path": "CHANGELOG.md",
+      "include-v-in-tag": true,
+      "changelog-sections": [
+        {
+          "type": "feat",
+          "section": "✨ Novidades"
+        },
+        {
+          "type": "fix",
+          "section": "🐛 Correções"
+        },
+        {
+          "type": "perf",
+          "section": "⚡ Desempenho"
+        },
+        {
+          "type": "refactor",
+          "section": "♻️ Refatoração"
+        },
+        {
+          "type": "docs",
+          "section": "📝 Documentação"
+        },
+        {
+          "type": "style",
+          "section": "🎨 Estilo",
+          "hidden": true
+        },
+        {
+          "type": "chore",
+          "section": "🔧 Manutenção",
+          "hidden": true
+        },
+        {
+          "type": "test",
+          "section": "✅ Testes",
+          "hidden": true
+        },
+        {
+          "type": "build",
+          "section": "📦 Build",
+          "hidden": true
+        },
+        {
+          "type": "ci",
+          "section": "👷 CI",
+          "hidden": true
+        }
+      ]
+    }
+  }
+}

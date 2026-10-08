@@ -1,0 +1,19 @@
+# Lê os commits da main (Conventional Commits) e mantém aberto um PR
+# "release X.Y.Z" com a nova versão e o CHANGELOG. Ao dar merge nele,
+# a tag e a release do GitHub são criadas.
+name: Release Please
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: googleapis/release-please-action@v5

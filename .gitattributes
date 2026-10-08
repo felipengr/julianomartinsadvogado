@@ -1,0 +1,7 @@
+# Guarda tudo com quebra de linha LF (evita avisos de CRLF no Windows).
+* text=auto eol=lf
+
+*.png binary
+*.jpg binary
+*.ico binary
+*.ttf binary
